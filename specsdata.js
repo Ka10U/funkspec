@@ -1,0 +1,73 @@
+export default specsData = [
+    {
+        main_func: "Propulser le scooter",
+        sec_funcs: [
+            {
+                name: "Transmettre la puissance électrique",
+                type: "fondamental",
+                versions: ["v1", "v2", "v3"],
+                composant: "Controleur",
+                solution: "Hardware",
+                faisceau: "2 x ...",
+                protocole: "N/A",
+                interfaces: "connecteur Batterie",
+            },
+            {
+                name: "Piloter la rotation du moteur",
+                type: "fondamental",
+                versions: ["v1", "V2"],
+                composant: "Controleur",
+                solution: "Hardware",
+                faisceau: "3 x ...",
+                protocole: "N/A",
+                interfaces: "connecteur Moteur",
+            },
+            {
+                name: "Piloter la rotation du moteur",
+                type: "fondamental",
+                versions: ["v3"],
+                composant: "Controleur",
+                solution: "Hardware",
+                faisceau: "3 x ...",
+                protocole: "N/A",
+                interfaces: "connecteur Moteur",
+            },
+        ],
+    },
+
+    {
+        main_func: "Recharger la batterie",
+        sec_funcs: [
+            {
+                name: "Contrôler la température pendant la charge",
+                type: "sécurité",
+                versions: ["v1"],
+                composant: "BMS",
+                solution: "Firmware",
+                faisceau: "XXX",
+                protocole: "N/A",
+                interfaces: "Sonde température",
+            },
+            {
+                name: "Contrôler la température pendant la charge",
+                type: "sécurité",
+                versions: ["v2"],
+                composant: "BMS",
+                solution: "Firmware",
+                faisceau: "YYY",
+                protocole: "N/A",
+                interfaces: "Sonde température",
+            },
+            {
+                name: "Contrôler la température pendant la charge",
+                type: "sécurité",
+                versions: ["v3"],
+                composant: "BMS",
+                solution: "Firmware",
+                faisceau: "ZZZ",
+                protocole: "N/A",
+                interfaces: "Sonde température",
+            },
+        ],
+    },
+];
