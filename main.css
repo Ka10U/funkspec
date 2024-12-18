@@ -8,7 +8,7 @@
 }
 
 body {
-    background-color: aquamarine;
+    background-color: #EAFAA5;
     margin-left: 16px;
     margin-right: 16px;
 }
@@ -39,7 +39,7 @@ select {
     background-color: rgba(220, 235, 250);
     display: grid;
     grid-template-columns: 2fr 3fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    height: 40px;
+    height: 36px;
     align-items: center;
     justify-content: space-between;
     padding: 8px;

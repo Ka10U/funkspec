@@ -5,68 +5,67 @@ const specsData = [
             {
                 name: "Transmettre la puissance électrique",
                 type: "fondamental",
-                versions: ["v1", "v2", "v3"],
+                versions: ["v3"],
                 composant: "Controleur",
                 solution: "Hardware",
-                faisceau: "2 x ...",
+                faisceau: "BATT-ESC",
                 protocole: "N/A",
                 interfaces: "connecteur Batterie",
             },
             {
-                name: "Piloter la rotation du moteur",
+                name: "Transmettre la puissance électrique",
                 type: "fondamental",
-                versions: ["v1", "v2"],
+                versions: ["m3"],
                 composant: "Controleur",
                 solution: "Hardware",
-                faisceau: "3 x ...",
+                faisceau: "BATT-ESC",
                 protocole: "N/A",
-                interfaces: "connecteur Moteur",
+                interfaces: "borniers de puissance",
             },
             {
                 name: "Piloter la rotation du moteur",
                 type: "fondamental",
-                versions: ["v3"],
+                versions: ["v3", "m3"],
                 composant: "Controleur",
                 solution: "Hardware",
-                faisceau: "3 x ...",
+                faisceau: "ESC-MOT",
                 protocole: "N/A",
                 interfaces: "connecteur Moteur",
             },
         ],
     },
-
     {
         main_func: "Recharger la batterie",
         sec_funcs: [
             {
                 name: "Contrôler la température pendant la charge",
                 type: "sécurité",
-                versions: ["v1"],
+                versions: ["v3", "m3"],
                 composant: "BMS",
                 solution: "Firmware",
-                faisceau: "XXX",
+                faisceau: "N/A",
                 protocole: "N/A",
                 interfaces: "Sonde température",
             },
             {
-                name: "Contrôler la température pendant la charge",
+                name: "Inhiber moteur pendant la charge",
                 type: "sécurité",
-                versions: ["v2"],
-                composant: "BMS",
-                solution: "Firmware",
-                faisceau: "YYY",
-                protocole: "N/A",
-                interfaces: "Sonde température",
+                versions: ["v3", "m3"],
+                composant: "Controleur",
+                solution: "Hardware",
+                faisceau: "J2",
+                protocole: "12VDC",
+                interfaces: "J2-04-TEMP",
             },
             {
-                name: "Contrôler la température pendant la charge",
+                name: "Inhiber moteur pendant la charge",
                 type: "sécurité",
-                versions: ["v3"],
-                composant: "BMS",
-                solution: "Firmware",
-                faisceau: "ZZZ",
-                protocole: "N/A",
-                interfaces: "Sonde température",
+                versions: ["m3"],
+                composant: "Optocoupleur",
+                solution: "Hardware",
+                faisceau: "J2",
+                protocole: "12VDC",
+                interfaces: "J2-04-TEMP",
             },
         ],
     },
@@ -74,14 +73,99 @@ const specsData = [
         main_func: "Freiner le véhicule",
         sec_funcs: [
             {
-                name: "Activer le frein de roue avant",
+                name: "Activer le frein de roue arrière",
                 type: "homologation",
-                versions: ["v1", "v2", "v3"],
+                versions: ["v3", "m3"],
+                composant: "Frein gauche",
+                solution: "Hardware",
+                faisceau: "durite",
+                protocole: "N/A",
+                interfaces: "Poignée gauche",
+            },
+            {
+                name: "Répartir le freinage avant/arrière",
+                type: "homologation",
+                versions: ["v3", "m3"],
+                composant: "Frein droit",
+                solution: "Hardware",
+                faisceau: "durite",
+                protocole: "N/A",
+                interfaces: "Poignée droite",
+            },
+        ],
+    },
+    {
+        main_func: "Accélérer le véhicule",
+        sec_funcs: [
+            {
+                name: "Augmenter la vitesse",
+                type: "fondamental",
+                versions: ["v3", "m3"],
+                composant: "Poignée droite",
+                solution: "Hardware",
+                faisceau: "durite",
+                protocole: "N/A",
+                interfaces: "Poignée gauche",
+            },
+            {
+                name: "Répartir le freinage avant/arrière",
+                type: "homologation",
+                versions: ["v3", "m3"],
                 composant: "Frein",
                 solution: "Hardware",
                 faisceau: "durite",
                 protocole: "N/A",
-                interfaces: "Poignée",
+                interfaces: "Poignée droite",
+            },
+        ],
+    },
+    {
+        main_func: "Signaler le véhicule",
+        sec_funcs: [
+            {
+                name: "Signal sonore",
+                type: "homologation",
+                versions: ["v3", "m3"],
+                composant: "Klaxon",
+                solution: "Hardware",
+                faisceau: "",
+                protocole: "",
+                interfaces: "Poignée gauche",
+            },
+            {
+                name: "Signaler direction",
+                type: "homologation",
+                versions: ["v3", "m3"],
+                composant: "Feux de signalisation",
+                solution: "Hardware",
+                faisceau: "",
+                protocole: "N/A",
+                interfaces: "Poignée gauche",
+            },
+        ],
+    },
+    {
+        main_func: "Améliorer confort utilisateur",
+        sec_funcs: [
+            {
+                name: "Poignées chauffantes",
+                type: "optionel",
+                versions: ["v3", "m3"],
+                composant: "chauffe poignées",
+                solution: "Hardware",
+                faisceau: "",
+                protocole: "",
+                interfaces: "",
+            },
+            {
+                name: "Anti Tilt",
+                type: "optionel",
+                versions: ["m3"],
+                composant: "ATT",
+                solution: "Hardware",
+                faisceau: "ATT",
+                protocole: "N/A",
+                interfaces: "Arduino",
             },
         ],
     },
@@ -122,13 +206,9 @@ customElements.define("funk-spec", FunkSpec);
 const DataTable = document.querySelector("#datatable");
 console.log("element datatable", DataTable);
 
-// const versionSelector = document.querySelector("#version");
-// const versionSelector = document.querySelector(".version-select");
-// let activeVersion = versionSelector.value;
-// console.log("version sélectionnée: ", activeVersion);
-
 const selectors = {
     "func-select": ["All"],
+    "sec-select": ["All"],
     "type-select": ["All"],
     "version-select": ["All"],
     "comp-select": ["All"],
@@ -138,6 +218,7 @@ const selectors = {
 };
 
 const funcSelector = document.querySelector(".func-select");
+const secSelector = document.querySelector(".sec-select");
 const typeSelector = document.querySelector(".type-select");
 const versionSelector = document.querySelector(".version-select");
 const compSelector = document.querySelector(".comp-select");
@@ -156,6 +237,10 @@ const initData = () => {
         }
         mainFunc.sec_funcs.forEach((secFunc) => {
             let currentSecFunc = secFunc.name;
+            // if (!selectors["sec-select"].includes(currentSecFunc)) {
+            //     selectors["sec-select"].push(currentSecFunc);
+            //     secSelector.innerHTML += `<option value=${removeSpaces(currentSecFunc)}>${currentSecFunc}</option>`;
+            // }
             let currentFuncType = secFunc.type;
             if (!selectors["type-select"].includes(currentFuncType)) {
                 selectors["type-select"].push(currentFuncType);
@@ -191,6 +276,23 @@ const initData = () => {
                 }
             });
         });
+    });
+};
+
+const updateSecondaryFuncList = (activeMainFunc) => {
+    selectors["sec-select"] = ["All"];
+    secSelector.innerHTML = `<option value="All">All</option>`;
+    specsData.forEach((mainFunc) => {
+        let currentMainFunc = mainFunc.main_func;
+        if (activeMainFunc === removeSpaces(currentMainFunc)) {
+            mainFunc.sec_funcs.forEach((secFunc) => {
+                let currentSecFunc = secFunc.name;
+                if (!selectors["sec-select"].includes(currentSecFunc)) {
+                    selectors["sec-select"].push(currentSecFunc);
+                    secSelector.innerHTML += `<option value=${removeSpaces(currentSecFunc)}>${currentSecFunc}</option>`;
+                }
+            });
+        }
     });
 };
 
@@ -242,7 +344,15 @@ const listFunctions = () => {
 initData();
 listFunctions();
 
-[funcSelector, typeSelector, versionSelector, compSelector, solutionSelector, cableSelector, protocoleSelector].forEach((sel) =>
+funcSelector.addEventListener("change", (e) => {
+    secSelector.disabled = e.target.value === "All";
+    if (e.target.value !== "All") {
+        updateSecondaryFuncList(removeSpaces(e.target.value));
+    }
+    listFunctions();
+});
+
+[secSelector, typeSelector, versionSelector, compSelector, solutionSelector, cableSelector, protocoleSelector].forEach((sel) =>
     sel.addEventListener("change", (e) => {
         listFunctions();
     })
